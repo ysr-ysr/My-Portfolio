@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssra Zahaf – Full Stack Web Developer & AI Enthusiast</title>
+    <meta name="description"
+        content="Portfolio of Youssra Zahaf – Full Stack Web Developer & AI Integration Enthusiast. Building intelligent web applications powered by modern technologies and AI.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cosmos: {
+                            900: '#0a0a1a',
+                            800: '#0d0d2b',
+                            700: '#111136',
+                            600: '#161650',
+                            500: '#1a1a5e',
+                        },
+                        nebula: {
+                            purple: '#7c3aed',
+                            blue: '#3b82f6',
+                            pink: '#c084fc',
+                            cyan: '#22d3ee',
+                        }
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-cosmos-900 text-white font-inter antialiased overflow-x-hidden">
+
+    <!-- ====== Star Canvas Background ====== -->
+    <canvas id="starfield" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+
+    <!-- ====== Navbar ====== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="font-outfit font-bold text-xl tracking-wide">
+                <span class="bg-gradient-to-r from-nebula-blue to-nebula-purple bg-clip-text text-transparent">
+                    ✦ Youssra
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cosmos-800/95 backdrop-blur-xl border-t border-white/5">
+            <ul class="flex flex-col items-center py-6 gap-5 text-sm font-medium">
+                <li><a href="#about" class="nav-link mobile-nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link mobile-nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link mobile-nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link mobile-nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link mobile-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ====== 1. HERO SECTION ====== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center text-center px-6 z-10">
+        <!-- Nebula Glow Backgrounds -->
+        <div class="nebula-blob nebula-blob-1"></div>
+        <div class="nebula-blob nebula-blob-2"></div>
+        <div class="nebula-blob nebula-blob-3"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto reveal">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-xs font-medium text-nebula-cyan mb-8 tracking-wider uppercase">
+                <span class="w-2 h-2 rounded-full bg-nebula-cyan animate-pulse"></span>
+                Open to Collaboration
+            </div>
+
+            <h1 class="font-outfit font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight mb-6">
+                <span class="block text-white">Youssra</span>
+                <span
+                    class="bg-gradient-to-r from-nebula-blue via-nebula-purple to-nebula-pink bg-clip-text text-transparent">
+                    Zahaf
+                </span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-300 font-light mb-4 leading-relaxed max-w-2xl mx-auto">
+                Full Stack Web Developer & AI Integration Enthusiast
+            </p>
+            <p class="text-sm sm:text-base text-gray-400 font-light mb-10 leading-relaxed max-w-xl mx-auto">
+                Building intelligent web applications powered by modern technologies and AI.
+            </p>
+
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="#projects" class="glow-btn glow-btn-primary">
+                    <i class="fa-solid fa-rocket mr-2"></i>View Projects
+                </a>
+                <a href="#contact" class="glow-btn glow-btn-secondary">
+                    <i class="fa-solid fa-envelope mr-2"></i>Contact Me
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce">
+            <span class="text-xs text-gray-400 tracking-widest uppercase">Scroll</span>
+            <i class="fa-solid fa-chevron-down text-nebula-cyan text-sm"></i>
+        </div>
+    </section>
+
+    <!-- ====== 2. ABOUT SECTION ====== -->
+    <section id="about" class="relative py-24 lg:py-32 px-6 z-10">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="section-label">Get to Know Me</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                <!-- Avatar / Visual -->
+                <div class="lg:col-span-2 flex justify-center reveal">
+                    <div class="relative">
+                        <div
+                            class="w-64 h-64 rounded-full bg-gradient-to-br from-nebula-blue/20 via-nebula-purple/20 to-nebula-pink/20 border border-white/10 backdrop-blur-md flex items-center justify-center">
+                            <div
+                                class="w-56 h-56 rounded-full bg-gradient-to-br from-cosmos-700 to-cosmos-800 border border-white/5 flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user-astronaut text-7xl text-nebula-purple/60"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-nebula-cyan/30 animate-ping"></div>
+                        <div class="absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-nebula-purple/40 animate-pulse">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio Text -->
+                <div class="lg:col-span-3 reveal">
+                    <div class="space-y-4 text-gray-300 leading-relaxed text-[15px]">
+                        <p>
+                            I am a software development student with a strong passion for <span
+                                class="text-nebula-cyan font-medium">web development</span>, <span
+                                class="text-nebula-purple font-medium">AI integration</span>, and <span
+                                class="text-nebula-blue font-medium">automation</span>.
+                        </p>
+                        <p>
+                            I focus on building scalable and structured applications that combine clean frontend
+                            interfaces with intelligent backend logic. I enjoy exploring AI models like <strong
+                                class="text-white/90">Gemini API</strong> and <strong
+                                class="text-white/90">Ollama</strong>, and I continuously enhance my skills through
+                            hands-on projects and professional training.
+                        </p>
+                        <p>
+                            I thrive in learning new technologies and creating solutions that are both <span
+                                class="text-nebula-pink font-medium">practical</span> and <span
+                                class="text-nebula-blue font-medium">innovative</span>.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <div class="stat-card">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Curiosity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 3. SKILLS SECTION ====== -->
+    <section id="skills" class="relative py-24 lg:py-32 px-6 z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="section-label">My Toolkit</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                <!-- Frontend -->
+                <div class="skill-card">
+                    <div class="skill-card-icon bg-gradient-to-br from-blue-500/20 to-cyan-500/20">
+                        <i class="fa-solid fa-code text-2xl text-nebula-cyan"></i>
+                    </div>
+                    <h3 class="text-lg font-outfit font-semibold mb-4">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-card">
+                    <div class="skill-card-icon bg-gradient-to-br from-purple-500/20 to-pink-500/20">
+                        <i class="fa-solid fa-server text-2xl text-nebula-purple"></i>
+                    </div>
+                    <h3 class="text-lg font-outfit font-semibold mb-4">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Python (Flask)</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C#</span>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card">
+                    <div class="skill-card-icon bg-gradient-to-br from-green-500/20 to-emerald-500/20">
+                        <i class="fa-solid fa-database text-2xl text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-outfit font-semibold mb-4">Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                    </div>
+                </div>
+
+                <!-- AI & Automation -->
+                <div class="skill-card">
+                    <div class="skill-card-icon bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20">
+                        <i class="fa-solid fa-brain text-2xl text-fuchsia-400"></i>
+                    </div>
+                    <h3 class="text-lg font-outfit font-semibold mb-4">AI & Automation</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Gemini API</span>
+                        <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">n8n</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-card sm:col-span-2 lg:col-span-2">
+                    <div class="skill-card-icon bg-gradient-to-br from-orange-500/20 to-amber-500/20">
+                        <i class="fa-solid fa-screwdriver-wrench text-2xl text-amber-400"></i>
+                    </div>
+                    <h3 class="text-lg font-outfit font-semibold mb-4">Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 4. PROJECTS SECTION ====== -->
+    <section id="projects" class="relative py-24 lg:py-32 px-6 z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="section-label">Featured Work</span>
+                <h2 class="section-title">Projects <span class="text-2xl"></span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Project 1: LunaTask -->
+                <div class="project-card reveal">
+                    <div class="project-card-header bg-gradient-to-br from-indigo-500/10 to-purple-500/10">
+                        <span class="project-emoji">🌕</span>
+                        <h3 class="font-outfit font-bold text-xl">LunaTask</h3>
+                        <p class="text-nebula-cyan text-xs font-medium tracking-wider uppercase mt-1">AI Productivity
+                            Assistant</p>
+                    </div>
+                    <div class="project-card-body">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            AI-powered productivity app with secure authentication, task CRUD operations, and an
+                            integrated conversational AI assistant for productivity guidance and smart suggestions.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">AI API</span>
+                        </div>
+                        <div class="flex gap-2 mt-4 pt-4 border-t border-white/5">
+                            <a href="#" target="_blank" class="project-btn project-btn-demo"><i
+                                    class="fa-solid fa-eye mr-1.5"></i>View Demo</a>
+                            <a href="#" target="_blank" class="project-btn project-btn-github"><i
+                                    class="fa-brands fa-github mr-1.5"></i>GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: StellarScan -->
+                <div class="project-card reveal">
+                    <div class="project-card-header bg-gradient-to-br from-amber-500/10 to-yellow-500/10">
+                        <span class="project-emoji">⭐</span>
+                        <h3 class="font-outfit font-bold text-xl">StellarScan</h3>
+                        <p class="text-nebula-cyan text-xs font-medium tracking-wider uppercase mt-1">AI Resume Analyzer
+                        </p>
+                    </div>
+                    <div class="project-card-body">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Intelligent resume analysis system that evaluates candidate profiles using AI-based text
+                            processing. Extracts info, analyzes content, and generates structured scoring insights.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Postgre</span>
+                            <span class="tech-tag">Ollama</span>
+                            <span class="tech-tag">n8n</span>
+                        </div>
+                        <div class="flex gap-2 mt-4 pt-4 border-t border-white/5">
+                            <a href="#" target="_blank" class="project-btn project-btn-demo"><i
+                                    class="fa-solid fa-eye mr-1.5"></i>View Demo</a>
+                            <a href="#" target="_blank" class="project-btn project-btn-github"><i
+                                    class="fa-brands fa-github mr-1.5"></i>GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: CelestiCV -->
+                <div class="project-card reveal">
+                    <div class="project-card-header bg-gradient-to-br from-pink-500/10 to-rose-500/10">
+                        <span class="project-emoji">✨</span>
+                        <h3 class="font-outfit font-bold text-xl">CelestiCV</h3>
+                        <p class="text-nebula-cyan text-xs font-medium tracking-wider uppercase mt-1">Smart Resume
+                            Builder</p>
+                    </div>
+                    <div class="project-card-body">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Dynamic resume builder generating structured, professional CVs through an interactive
+                            interface. Future plans include AI-assisted content suggestions & template customization.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Web Stack</span>
+                            <span class="tech-tag">Backend</span>
+                            <span class="tech-tag">Dynamic Forms</span>
+                        </div>
+                        <div class="flex gap-2 mt-4 pt-4 border-t border-white/5">
+                            <a href="#" target="_blank" class="project-btn project-btn-demo"><i
+                                    class="fa-solid fa-eye mr-1.5"></i>View Demo</a>
+                            <a href="#" target="_blank" class="project-btn project-btn-github"><i
+                                    class="fa-brands fa-github mr-1.5"></i>GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: CosmoTools -->
+                <div class="project-card reveal">
+                    <div class="project-card-header bg-gradient-to-br from-cyan-500/10 to-teal-500/10">
+                        <span class="project-emoji">🛰</span>
+                        <h3 class="font-outfit font-bold text-xl">CosmoTools</h3>
+                        <p class="text-nebula-cyan text-xs font-medium tracking-wider uppercase mt-1">Developer Utility
+                            Suite</p>
+                    </div>
+                    <div class="project-card-body">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Developer-focused utility platform with QR code generation and media processing tools.
+                            Emphasizes API usage, dynamic content handling, and functional web interfaces.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Web Tech</span>
+                        </div>
+                        <div class="flex gap-2 mt-4 pt-4 border-t border-white/5">
+                            <a href="#" target="_blank" class="project-btn project-btn-demo"><i
+                                    class="fa-solid fa-eye mr-1.5"></i>View Demo</a>
+                            <a href="#" target="_blank" class="project-btn project-btn-github"><i
+                                    class="fa-brands fa-github mr-1.5"></i>GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: QuizNova -->
+                <div class="project-card reveal">
+                    <div class="project-card-header bg-gradient-to-br from-blue-500/10 to-indigo-500/10">
+                        <span class="project-emoji">🌠</span>
+                        <h3 class="font-outfit font-bold text-xl">QuizNova</h3>
+                        <p class="text-nebula-cyan text-xs font-medium tracking-wider uppercase mt-1">AI Quiz Generator
+                        </p>
+                    </div>
+                    <div class="project-card-body">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            AI-powered quiz generation platform creating dynamic question sets based on user-defined
+                            topics. Leverages generative AI models for structured quizzes.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-tag">Ollama</span>
+                            <span class="tech-tag">Backend</span>
+                            <span class="tech-tag">Dynamic Content</span>
+                        </div>
+                        <div class="flex gap-2 mt-4 pt-4 border-t border-white/5">
+                            <a href="#" target="_blank" class="project-btn project-btn-demo"><i
+                                    class="fa-solid fa-eye mr-1.5"></i>View Demo</a>
+                            <a href="#" target="_blank" class="project-btn project-btn-github"><i
+                                    class="fa-brands fa-github mr-1.5"></i>GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Note Card -->
+                <div class="project-card reveal border-nebula-purple/20">
+                    <div class="project-card-header bg-gradient-to-br from-violet-500/10 to-fuchsia-500/10">
+                        <span class="project-emoji">🤖</span>
+                        <h3 class="font-outfit font-bold text-lg">AI Integration</h3>
+                        <p class="text-nebula-cyan text-xs font-medium tracking-wider uppercase mt-1">Ollama, Gemini
+                            API, n8n</p>
+                    </div>
+                    <div class="project-card-body flex items-center">
+                        <p class="text-gray-400 text-sm leading-relaxed italic">
+                            Several projects integrate AI models using <span class="text-nebula-cyan font-medium">Gemini
+                                API</span> and local LLMs via <span class="text-nebula-purple font-medium">Ollama</span>
+                            for intelligent features and automation.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 5. CERTIFICATIONS SECTION ====== -->
+    <section id="certifications" class="relative py-24 lg:py-32 px-6 z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="section-label">Continuous Growth</span>
+                <h2 class="section-title">Certifications & Development</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Cert 1 -->
+                <div class="cert-card reveal">
+                    <div class="cert-icon bg-gradient-to-br from-blue-500/20 to-cyan-500/20">
+                        <i class="fa-solid fa-award text-nebula-cyan"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-semibold text-white mb-1">AI Starter Kit (AISK)</h3>
+                        <p class="text-nebula-purple text-xs font-medium tracking-wider uppercase mb-2">ALX</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Completed foundational training in AI
+                            concepts,
+                            tools, and practical implementation strategies.</p>
+                        <a href="#" target="_blank" class="cert-btn"><i
+                                class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i>View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card reveal">
+                    <div class="cert-icon bg-gradient-to-br from-purple-500/20 to-pink-500/20">
+                        <i class="fa-solid fa-headset text-nebula-purple"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-semibold text-white mb-1">Virtual Assistant Program</h3>
+                        <p class="text-nebula-purple text-xs font-medium tracking-wider uppercase mb-2">ALX</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Developed skills in digital organization,
+                            workflow management, communication, and remote task coordination.</p>
+                        <a href="#" target="_blank" class="cert-btn"><i
+                                class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i>View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card reveal">
+                    <div class="cert-icon bg-gradient-to-br from-indigo-500/20 to-blue-500/20">
+                        <i class="fa-solid fa-microchip text-nebula-blue"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-semibold text-white mb-1">Digital Sticker – IBM Granite Models</h3>
+                        <p class="text-nebula-purple text-xs font-medium tracking-wider uppercase mb-2">IBM</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Earned recognition for understanding and
+                            applying IBM Granite models in software development workflows and AI-assisted coding.</p>
+                        <a href="#" target="_blank" class="cert-btn"><i
+                                class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i>View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card reveal">
+                    <div class="cert-icon bg-gradient-to-br from-sky-500/20 to-cyan-500/20">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sky-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-semibold text-white mb-1">Use Generative AI for Software Development
+                        </h3>
+                        <p class="text-nebula-purple text-xs font-medium tracking-wider uppercase mb-2">IBM</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Completed training focused on integrating
+                            generative AI tools into modern software development processes.</p>
+                        <a href="#" target="_blank" class="cert-btn"><i
+                                class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i>View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="cert-card reveal">
+                    <div class="cert-icon bg-gradient-to-br from-fuchsia-500/20 to-violet-500/20">
+                        <i class="fa-solid fa-comments text-fuchsia-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-semibold text-white mb-1">Prompt Engineering</h3>
+                        <p class="text-nebula-purple text-xs font-medium tracking-wider uppercase mb-2">Alison</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Acquired knowledge in prompt structuring,
+                            AI
+                            instruction optimization, and effective interaction with large language models.</p>
+                        <a href="#" target="_blank" class="cert-btn"><i
+                                class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i>View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 6 - In Progress -->
+                <div class="cert-card reveal border-nebula-cyan/20">
+                    <div class="cert-icon bg-gradient-to-br from-cyan-500/20 to-green-500/20">
+                        <i class="fa-brands fa-react text-nebula-cyan animate-spin-slow"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-semibold text-white mb-1">
+                            React
+                            <span
+                                class="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-nebula-cyan/10 border border-nebula-cyan/20 text-nebula-cyan text-[10px] font-medium tracking-wider uppercase">
+                                <span class="w-1.5 h-1.5 rounded-full bg-nebula-cyan animate-pulse"></span>
+                                In Progress
+                            </span>
+                        </h3>
+                        <p class="text-nebula-purple text-xs font-medium tracking-wider uppercase mb-2">freeCodeCamp</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Currently advancing frontend development skills
+                            through hands-on React training and project-based learning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 6. TECH PHILOSOPHY SECTION ====== -->
+    <section id="philosophy" class="relative py-24 lg:py-32 px-6 z-10">
+        <div class="max-w-3xl mx-auto text-center reveal">
+            <span class="section-label">My Approach</span>
+            <h2 class="section-title">Tech Philosophy</h2>
+
+            <div class="relative mt-10">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-nebula-blue/5 via-nebula-purple/5 to-nebula-pink/5 rounded-3xl blur-xl">
+                </div>
+                <div
+                    class="relative bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-3xl px-8 py-10 sm:px-12 sm:py-14">
+                    <i class="fa-solid fa-quote-left text-3xl text-nebula-purple/30 mb-6 block"></i>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
+                        I focus on building <span class="text-nebula-cyan font-medium">structured</span>, <span
+                            class="text-nebula-purple font-medium">scalable</span>, and <span
+                            class="text-nebula-blue font-medium">intelligent</span> applications that combine clean
+                        frontend design with powerful backend logic and AI integration.
+                    </p>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        My goal is to create solutions that are practical, innovative, and user-friendly.
+                    </p>
+                    <i class="fa-solid fa-quote-right text-3xl text-nebula-purple/30 mt-6 block text-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 7. CONTACT SECTION ====== -->
+    <section id="contact" class="relative py-24 lg:py-32 px-6 z-10">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="section-label">Let's Connect</span>
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="text-gray-400 text-sm mt-4 max-w-lg mx-auto">Open to collaboration and innovative projects.
+                    Feel free to reach out!</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+                <!-- Email -->
+                <a href="mailto:youssrazahafy@gmail.com" class="contact-card group">
+                    <div
+                        class="contact-icon bg-gradient-to-br from-blue-500/20 to-cyan-500/20 group-hover:from-blue-500/30 group-hover:to-cyan-500/30">
+                        <i class="fa-solid fa-envelope text-xl text-nebula-cyan"></i>
+                    </div>
+                    <span class="text-sm font-medium text-white">Email</span>
+                    <span class="text-xs text-gray-500">youssrazahafy@gmail.com</span>
+                </a>
+
+                <!-- Whatsapp -->
+                <a href="https://wa.me/212602740801" target="_blank" rel="noopener noreferrer"
+                    class="contact-card group">
+                    <div
+                        class="contact-icon bg-gradient-to-br from-green-500/20 to-teal-500/20 group-hover:from-green-500/30 group-hover:to-teal-500/30">
+                        <i class="fa-brands fa-whatsapp text-xl text-nebula-green"></i>
+                    </div>
+                    <span class="text-sm font-medium text-white">Whatsapp</span>
+                    <span class="text-xs text-gray-500">+212 6 02 74 08 01</span>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/ysr-ysr" target="_blank" rel="noopener noreferrer"
+                    class="contact-card group">
+                    <div
+                        class="contact-icon bg-gradient-to-br from-purple-500/20 to-pink-500/20 group-hover:from-purple-500/30 group-hover:to-pink-500/30">
+                        <i class="fa-brands fa-github text-xl text-nebula-purple"></i>
+                    </div>
+                    <span class="text-sm font-medium text-white">GitHub</span>
+                    <span class="text-xs text-gray-500">github.com/ysr-ysr</span>
+                </a>
+
+
+                <!-- Download CV -->
+                <a href="#" class="contact-card group">
+                    <div
+                        class="contact-icon bg-gradient-to-br from-pink-500/20 to-rose-500/20 group-hover:from-pink-500/30 group-hover:to-rose-500/30">
+                        <i class="fa-solid fa-file-arrow-down text-xl text-nebula-pink"></i>
+                    </div>
+                    <span class="text-sm font-medium text-white">Download CV</span>
+                    <span class="text-xs text-gray-500">PDF Resume</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/zyoussra/" target="_blank" rel="noopener noreferrer"
+                    class="contact-card group">
+                    <div
+                        class="contact-icon bg-gradient-to-br from-blue-600/20 to-blue-400/20 group-hover:from-blue-600/30 group-hover:to-blue-400/30">
+                        <i class="fa-brands fa-linkedin-in text-xl text-blue-400"></i>
+                    </div>
+                    <span class="text-sm font-medium text-white">LinkedIn</span>
+                    <span class="text-xs text-gray-500">Youssra Zahaf</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== Footer ====== -->
+    <footer class="relative z-10 border-t border-white/5 py-8 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-xs">
+                &copy; 2026 Youssra Zahaf. Crafted with <i class="fa-solid fa-heart text-nebula-pink/60"></i> & cosmic
+                curiosity.
+            </p>
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/ysr-ysr" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-500 hover:text-nebula-purple transition-colors">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="mailto:youssrazahafy@gmail.com" class="text-gray-500 hover:text-nebula-cyan transition-colors">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
