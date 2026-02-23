@@ -638,6 +638,271 @@ body::after {
   }
 }
 
+/* ===================================================
+   COSMIC DIVIDERS & CELESTIAL DECORATIONS
+   Inspired by vintage astronomy aesthetic
+   =================================================== */
+
+/* ---- Cosmic Divider Bar ---- */
+.cosmic-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  overflow: hidden;
+}
+
+/* Gold sparkle stars */
+.cosmic-star {
+  font-size: 0.9rem;
+  color: rgba(212, 168, 71, 0.5);
+  animation: star-pulse 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+.cosmic-star-gold {
+  font-size: 1rem;
+  color: #d4a847;
+  text-shadow:
+    0 0 10px rgba(212, 168, 71, 0.5),
+    0 0 25px rgba(212, 168, 71, 0.2);
+  animation: gold-glow 2.5s ease-in-out infinite alternate;
+  display: inline-block;
+}
+
+/* Crescent moons */
+.cosmic-moon {
+  font-size: 1.1rem;
+  color: rgba(240, 198, 116, 0.7);
+  text-shadow: 0 0 12px rgba(240, 198, 116, 0.3);
+  animation: moon-sway 4s ease-in-out infinite alternate;
+  display: inline-block;
+}
+
+/* Planet symbol */
+.cosmic-planet-icon {
+  font-size: 1.1rem;
+  color: rgba(124, 58, 237, 0.6);
+  text-shadow: 0 0 12px rgba(124, 58, 237, 0.3);
+  animation: star-pulse 5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Small dots between elements */
+.cosmic-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(212, 168, 71, 0.3);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Horizontal line */
+.cosmic-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 168, 71, 0.2) 30%,
+    rgba(212, 168, 71, 0.4) 50%,
+    rgba(212, 168, 71, 0.2) 70%,
+    transparent
+  );
+  display: inline-block;
+}
+
+/* Divider keyframes */
+@keyframes star-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes gold-glow {
+  from {
+    text-shadow:
+      0 0 8px rgba(212, 168, 71, 0.3),
+      0 0 20px rgba(212, 168, 71, 0.1);
+  }
+  to {
+    text-shadow:
+      0 0 15px rgba(212, 168, 71, 0.7),
+      0 0 35px rgba(212, 168, 71, 0.3),
+      0 0 60px rgba(212, 168, 71, 0.1);
+  }
+}
+
+@keyframes moon-sway {
+  from {
+    transform: rotate(-5deg) translateY(0);
+  }
+  to {
+    transform: rotate(5deg) translateY(-2px);
+  }
+}
+
+/* ---- Floating Celestial Decorations ---- */
+
+/* Shared base */
+.celestial-planet,
+.celestial-moon,
+.celestial-saturn,
+.celestial-stars-cluster {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+/* ---- Planet 1 (About section – top right) ---- */
+.celestial-planet-1 {
+  width: 180px;
+  height: 180px;
+  top: 40px;
+  right: -60px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(59, 130, 246, 0.18) 0%,
+    rgba(124, 58, 237, 0.12) 50%,
+    transparent 75%
+  );
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  box-shadow:
+    inset -20px -20px 40px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(59, 130, 246, 0.06);
+  animation: float-slow 12s ease-in-out infinite alternate;
+}
+
+/* ---- Planet 2 (Contact section – bottom left) ---- */
+.celestial-planet-2 {
+  width: 140px;
+  height: 140px;
+  bottom: 60px;
+  left: -50px;
+  background: radial-gradient(
+    circle at 40% 35%,
+    rgba(192, 132, 252, 0.15) 0%,
+    rgba(124, 58, 237, 0.08) 50%,
+    transparent 75%
+  );
+  border: 1px solid rgba(192, 132, 252, 0.07);
+  box-shadow:
+    inset -15px -15px 30px rgba(0, 0, 0, 0.3),
+    0 0 50px rgba(192, 132, 252, 0.05);
+  animation: float-slow 10s ease-in-out infinite alternate-reverse;
+}
+
+/* ---- Moon (Skills section – left side) ---- */
+.celestial-moon-1 {
+  width: 100px;
+  height: 100px;
+  top: 80px;
+  left: -30px;
+  background: radial-gradient(
+    circle at 38% 34%,
+    rgba(240, 198, 116, 0.15) 0%,
+    rgba(212, 168, 71, 0.07) 45%,
+    transparent 70%
+  );
+  border: 1px solid rgba(240, 198, 116, 0.08);
+  box-shadow:
+    inset -8px -10px 20px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(212, 168, 71, 0.04);
+  animation: float-slow 9s ease-in-out infinite alternate;
+}
+
+/* ---- Saturn-like orb (Projects section – upper right) ---- */
+.celestial-saturn {
+  width: 160px;
+  height: 160px;
+  top: 60px;
+  right: -40px;
+  background: radial-gradient(
+    circle at 36% 33%,
+    rgba(240, 198, 116, 0.14) 0%,
+    rgba(212, 168, 71, 0.08) 40%,
+    rgba(124, 58, 237, 0.04) 65%,
+    transparent 80%
+  );
+  border: 1px solid rgba(212, 168, 71, 0.07);
+  box-shadow:
+    inset -18px -16px 35px rgba(0, 0, 0, 0.35),
+    0 0 55px rgba(212, 168, 71, 0.04);
+  animation: float-slow 14s ease-in-out infinite alternate-reverse;
+}
+
+/* Saturn ring pseudo-element */
+.celestial-saturn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20%;
+  transform: translateY(-50%) rotate(-20deg);
+  width: 140%;
+  height: 30%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 168, 71, 0.12);
+  box-shadow: 0 0 15px rgba(212, 168, 71, 0.05);
+}
+
+/* ---- Star cluster (Certifications – top left) ---- */
+.celestial-stars-cluster {
+  width: 120px;
+  height: 120px;
+  top: 40px;
+  left: -20px;
+  background:
+    radial-gradient(
+      1.5px 1.5px at 20% 30%,
+      rgba(212, 168, 71, 0.8),
+      transparent
+    ),
+    radial-gradient(1px 1px at 60% 15%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 80% 60%, rgba(212, 168, 71, 0.5), transparent),
+    radial-gradient(1px 1px at 35% 75%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(
+      1.5px 1.5px at 70% 40%,
+      rgba(240, 198, 116, 0.7),
+      transparent
+    ),
+    radial-gradient(1px 1px at 15% 60%, rgba(212, 168, 71, 0.4), transparent),
+    radial-gradient(2px 2px at 50% 85%, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 0;
+  animation: cluster-twinkle 4s ease-in-out infinite;
+}
+
+/* Float animation shared by all celestial bodies */
+@keyframes float-slow {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-18px) rotate(3deg);
+  }
+}
+
+@keyframes cluster-twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
   width: 6px;
